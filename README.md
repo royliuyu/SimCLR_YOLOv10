@@ -51,4 +51,4 @@
  ![Precision-Recall Curve](./images/PR_curve.png)
 
 #### Acknowledgement
-Some of this work is based on [SimCLR](https://github.com/sthalles/SimCLR), thanks to thE valuable contributions.
+Some of this work is based on [SimCLR](https://github.com/sthalles/SimCLR), thanks to the valuable contributions.

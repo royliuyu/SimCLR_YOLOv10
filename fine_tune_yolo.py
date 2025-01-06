@@ -57,7 +57,6 @@ with open(data_yaml_path, 'w') as f:
     yaml.dump(data_config, f, default_flow_style=False)
 print(f"Data configuration saved to {data_yaml_path}")
 
-
 ## Step 1: Load the Model and Pretrained SimCLR-YOLO Weights
 model = YOLO("yolov10s.pt")  ## load with yolo's pretrained weight
 # model = YOLO("yolov10s.yaml")  ## load without yolo's pretrained weight
@@ -70,7 +69,6 @@ if os.path.exists(checkpoint_path):
     missing, unexpected = model.model.load_state_dict(combined_weights, strict=False)
 
     ## Verify the loading process
-    print("After loading SimCLR weights, param mean:", list(model.model.parameters())[0].mean().item())
     print("Missing keys:", missing)
     print("Unexpected keys:", unexpected)
     print("Combined model weights loaded successfully!")
@@ -106,8 +104,6 @@ model.train(
 final_model_path = './output/fine_tuned/yolo_final.pt'
 model.save(final_model_path)
 print(f"Fine-tuned model saved to {final_model_path}")
-# print("After fine-tuning's param mean:", list(model.model.model[0].parameters())[0].mean().item())
-
 
 ## Step 4: Evaluate the Model on the Validation Dataset
 model.eval()
@@ -115,7 +111,6 @@ metrics = model.val(
     project='./output/fine_tuned/',
     name='validation_results'
 )
-# print(metrics)
 
 ## Step 5: Make Predictions on Test Images
 results = model.predict(
